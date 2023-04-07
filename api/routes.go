@@ -1,36 +1,32 @@
 package api
 
 import (
-	"garistroy-backend/config"
-	"garistroy-backend/controllers"
-	"garistroy-backend/repository"
-	service2 "garistroy-backend/service"
 	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
 )
 
 type Server struct {
-	echo *echo.Echo
+	Echo *echo.Echo
 }
 
 func NewServer() *Server {
 	return &Server{
-		echo: echo.New(),
+		Echo: echo.New(),
 	}
 }
 
 func (s *Server) Start() {
-	s.echo.Use(middleware.Logger())
-	s.echo.Use(middleware.Recover())
-	repo := repository.NewVehicleRepository(config.DB.Db)
-	service := service2.NewVehicleRepository(repo)
-	controller := controllers.NewVehicleService(service)
-
-	s.echo.POST("/vehicle", controller.CreateVehicle)
-	s.echo.GET("/vehicle", controller.GetAllVehicle)
-	s.echo.GET("/vehicle/:vin", controller.GetVehicleByVin)
-	s.echo.PUT("/vehicle/:vin", controller.UpdateVehicleByVin)
-	s.echo.DELETE("/vehicle/:vin", controller.DeleteVehicleByVin)
-
-	s.echo.Logger.Fatal(s.echo.Start(":8080"))
+	//s.Echo.Use(middleware.Logger())
+	//s.Echo.Use(middleware.Recover())
+	//
+	//repo := repository.NewVehicleRepository(config.ConnectDb())
+	//service := service2.NewVehicleRepository(repo)
+	//controller := controllers.NewVehicleService(service)
+	//
+	//s.Echo.POST("/vehicle", controller.CreateVehicle)
+	//s.Echo.GET("/vehicle", controller.GetAllVehicle)
+	//s.Echo.GET("/vehicle/:vin", controller.GetVehicleByVin)
+	//s.Echo.PUT("/vehicle/:vin", controller.UpdateVehicleByVin)
+	//s.Echo.DELETE("/vehicle/:vin", controller.DeleteVehicleByVin)
+	//
+	//s.Echo.Logger.Fatal(s.Echo.Start(":8080"))
 }

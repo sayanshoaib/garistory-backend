@@ -18,7 +18,8 @@ func NewVehicleRepository(client *bun.DB) *VehicleRepository {
 }
 
 func (repo *VehicleRepository) CreateVehicle(ctx context.Context, vehicle *entity.Vehicle) (sql.Result, error) {
-	resp, err := repo.Client.NewInsert().Model(vehicle).
+	resp, err := repo.Client.NewInsert().
+		Model(vehicle).
 		ExcludeColumn("updated_at", "deleted_at").
 		Exec(ctx)
 
@@ -45,7 +46,10 @@ func (repo *VehicleRepository) GetVehicleByVin(ctx context.Context, vin string) 
 
 func (repo *VehicleRepository) GetAllVehicle(ctx context.Context) ([]entity.Vehicle, error) {
 	var vehicles []entity.Vehicle
-	_, err := repo.Client.NewSelect().Model(&vehicles).Limit(20).ScanAndCount(ctx)
+	_, err := repo.Client.NewSelect().
+		Model(&vehicles).
+		Limit(20).
+		ScanAndCount(ctx)
 
 	if err != nil {
 		return nil, err
@@ -71,7 +75,10 @@ func (repo *VehicleRepository) UpdateVehicleByVin(
 
 func (repo *VehicleRepository) DeleteVehicleByVin(ctx context.Context, vin string) (sql.Result, error) {
 	user := new(entity.Vehicle)
-	res, err := repo.Client.NewDelete().Model(user).Where("vehicle_id = ?", vin).Exec(ctx)
+	res, err := repo.Client.NewDelete().
+		Model(user).
+		Where("vehicle_id = ?", vin).
+		Exec(ctx)
 	if err != nil {
 		return nil, err
 	}

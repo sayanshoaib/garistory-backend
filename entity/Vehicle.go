@@ -16,7 +16,7 @@ type Vehicle struct {
 	InitialRegistration string    `json:"initialRegistration" bun:"initial_registration"`
 	RegistrationNumber  string    `json:"registrationNumber" bun:"registration_number"`
 	Fuel                int       `json:"fuel" bun:"fuel"`
-	Mileage             string    `json:"mileage" bun:"mileage"`
+	Mileage             int       `json:"mileage" bun:"mileage"`
 	Drive               int       `json:"drive" bun:"drive"`
 	Color               string    `json:"color" bun:"color"`
 	Transmission        int       `json:"transmission" bun:"transmission"`

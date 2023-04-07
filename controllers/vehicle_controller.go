@@ -4,6 +4,7 @@ import (
 	"garistroy-backend/apimodels"
 	"garistroy-backend/service"
 	"github.com/labstack/echo/v4"
+	"log"
 	"net/http"
 )
 
@@ -53,6 +54,7 @@ func (c *VehicleController) GetVehicleByVin(ctx echo.Context) error {
 func (c *VehicleController) GetAllVehicle(ctx echo.Context) error {
 	resp, err := c.VehicleService.GetAllVehicle(ctx.Request().Context())
 	if err != nil {
+		log.Print(err)
 		return ctx.JSON(http.StatusNotFound, map[string]interface{}{
 			"message": "No vehicle found",
 		})
@@ -98,7 +100,7 @@ func (c *VehicleController) DeleteVehicleByVin(ctx echo.Context) error {
 		})
 	}
 
-	return ctx.JSON(http.StatusNoContent, map[string]interface{}{
+	return ctx.JSON(http.StatusOK, map[string]interface{}{
 		"message": "Vehicle successfully deleted",
 		"data":    resp,
 	})

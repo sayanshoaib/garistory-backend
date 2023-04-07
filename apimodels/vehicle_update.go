@@ -9,7 +9,7 @@ type ReqVehicleUpdate struct {
 	InitialRegistration string `json:"initialRegistration"`
 	RegistrationNumber  string `json:"registrationNumber"`
 	Fuel                int    `json:"fuel"`
-	Mileage             string `json:"mileage"`
+	Mileage             int    `json:"mileage"`
 	Drive               int    `json:"drive"`
 	Color               string `json:"color"`
 	Transmission        int    `json:"transmission"`
