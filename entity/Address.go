@@ -12,7 +12,7 @@ type Address struct {
 	Street        string    `json:"street" bun:"street"`
 	Zipcode       string    `json:"zipcode" bun:"zipcode"`
 	Country       string    `json:"country" bun:"country"`
-	CreatedAt     time.Time `json:"created_at" bun:",nullzero,notnull,default:current_timestamp"`
-	UpdatedAt     time.Time `json:"updated_at" bun:",nullzero,notnull,default:current_timestamp"`
+	CreatedAt     time.Time `json:"created_at" bun:",nullzero,default:current_timestamp"`
+	UpdatedAt     time.Time `json:"updated_at" bun:",nullzero,default:current_timestamp"`
 	DeletedAt     time.Time `json:"deleted_at" bun:",soft_delete,nullzero"`
 }
