@@ -55,5 +55,12 @@ func main() {
 	e.PUT("/service-center/address/:id", addressController.UpdateAddressByID)
 	e.DELETE("/service-center/address/:id", addressController.DeleteAddressByID)
 
+	// Insurance Company endpoints
+	//e.POST("/insurance-companies")
+	//e.GET("/insurance-companies")
+	//e.GET("/insurance-companies/:insurance-company-id")
+	//e.PUT("/insurance-companies/:insurance-company-id")
+	//e.DELETE("/insurance-companies/:insurance-company-id")
+
 	e.Logger.Fatal(e.Start(":8080"))
 }
