@@ -14,7 +14,7 @@ import (
 //var DB DbInstance
 
 func ConnectDb() *bun.DB {
-	dsn := "postgres://shoaib:garistory123@db:5432/garistory-db?sslmode=disable"
+	dsn := "postgres://shoaib:@localhost:5432/garistory?sslmode=disable"
 	sqldb := sql.OpenDB(pgdriver.NewConnector(pgdriver.WithDSN(dsn)))
 
 	db := bun.NewDB(sqldb, pgdialect.New())
