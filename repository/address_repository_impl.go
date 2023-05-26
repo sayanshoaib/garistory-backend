@@ -36,6 +36,7 @@ func (repo *AddressRepository) GetAddressByID(ctx context.Context, addressID str
 		NewSelect().
 		Model(address).
 		Where("id = ?", addressID).
+		Where("deleted_at IS NULL").
 		Scan(ctx)
 	if err != nil {
 		log.Print(err)
@@ -51,6 +52,7 @@ func (repo *AddressRepository) GetAddressByZipcode(ctx context.Context, zipcode 
 		NewSelect().
 		Model(address).
 		Where("zipcode = ?", zipcode).
+		Where("deleted_at IS NULL").
 		Scan(ctx)
 	if err != nil {
 		log.Print(err)
@@ -65,6 +67,7 @@ func (repo *AddressRepository) GetAllAddress(ctx context.Context) ([]entity.Addr
 	count, err := repo.Client.
 		NewSelect().
 		Model(&addresses).
+		Where("deleted_at IS NULL").
 		Limit(20).
 		ScanAndCount(ctx)
 	if err != nil {

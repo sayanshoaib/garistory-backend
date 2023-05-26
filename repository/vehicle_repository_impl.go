@@ -35,6 +35,7 @@ func (repo *VehicleRepository) GetVehicleByVin(ctx context.Context, vin string) 
 	err := repo.Client.NewSelect().
 		Model(vehicle).
 		Where("vehicle_id = ?", vin).
+		Where("deleted_at IS NULL").
 		Scan(ctx)
 
 	if err != nil {
@@ -48,6 +49,7 @@ func (repo *VehicleRepository) GetAllVehicle(ctx context.Context) ([]entity.Vehi
 	var vehicles []entity.Vehicle
 	_, err := repo.Client.NewSelect().
 		Model(&vehicles).
+		Where("deleted_at IS NULL").
 		Limit(20).
 		ScanAndCount(ctx)
 
