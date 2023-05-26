@@ -179,8 +179,8 @@ func (service *ServicingCenterService) DeleteServiceCenterByID(ctx context.Conte
 	if servicingCenterID == "" {
 		return false, apimodels.ValidationError{
 			Errors: map[string][]string{
-				"error": []string{
-					"provide valid service center ID",
+				"error": {
+					"invalid service-center ID",
 				},
 			},
 		}

@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"garistroy-backend/apimodels"
 	"garistroy-backend/service"
 	"github.com/labstack/echo/v4"
@@ -141,8 +140,5 @@ func (c *AddressController) DeleteAddressByID(ctx echo.Context) error {
 		})
 	}
 
-	return ctx.JSON(http.StatusNoContent, map[string]interface{}{
-		"message": ok,
-		"data":    fmt.Sprintf("Successfully deleted address with id: %d", id),
-	})
+	return ctx.NoContent(http.StatusNoContent)
 }

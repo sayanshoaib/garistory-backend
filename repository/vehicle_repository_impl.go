@@ -74,9 +74,9 @@ func (repo *VehicleRepository) UpdateVehicleByVin(
 }
 
 func (repo *VehicleRepository) DeleteVehicleByVin(ctx context.Context, vin string) (sql.Result, error) {
-	user := new(entity.Vehicle)
+	vehicle := new(entity.Vehicle)
 	res, err := repo.Client.NewDelete().
-		Model(user).
+		Model(vehicle).
 		Where("vehicle_id = ?", vin).
 		Exec(ctx)
 	if err != nil {

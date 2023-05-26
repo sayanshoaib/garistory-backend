@@ -106,8 +106,9 @@ func (repo *ServicingCenterRepository) UpdateServicingCenter(ctx context.Context
 }
 
 func (repo *ServicingCenterRepository) DeleteServicingCenterByID(ctx context.Context, servicingCenterID string) error {
+	serviceCenter := &entity.ServiceCenter{}
 	_, err := repo.Client.NewDelete().
-		Model((*entity.ServiceCenter)(nil)).
+		Model(serviceCenter).
 		Where("service_center_id = ?", servicingCenterID).
 		Exec(ctx)
 	return err

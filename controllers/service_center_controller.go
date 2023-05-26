@@ -107,21 +107,18 @@ func (c *ServiceCenterController) DeleteServiceCenterByID(ctx echo.Context) erro
 	ok, err := c.ServicingCenterService.DeleteServiceCenterByID(ctx.Request().Context(), servicingCenterID)
 	if err != nil {
 		log.Print(err)
-		return ctx.JSON(http.StatusOK, map[string]interface{}{
+		return ctx.JSON(http.StatusInternalServerError, map[string]interface{}{
 			"message": ok,
 			"error":   err,
 		})
 	}
 
 	if !ok {
-		return ctx.JSON(http.StatusOK, map[string]interface{}{
+		return ctx.JSON(http.StatusInternalServerError, map[string]interface{}{
 			"message": ok,
 			"error":   apimodels.ErrNoDataMatched,
 		})
 	}
 
-	return ctx.JSON(http.StatusOK, map[string]interface{}{
-		"message": ok,
-		"data":    "Servicing center deleted successfully with ID: " + servicingCenterID,
-	})
+	return ctx.NoContent(http.StatusNoContent)
 }

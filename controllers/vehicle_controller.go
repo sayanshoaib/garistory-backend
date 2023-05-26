@@ -92,7 +92,7 @@ func (c *VehicleController) UpdateVehicleByVin(ctx echo.Context) error {
 
 func (c *VehicleController) DeleteVehicleByVin(ctx echo.Context) error {
 	vin := ctx.Param("vin")
-	resp, err := c.VehicleService.DeleteVehicleByVin(ctx.Request().Context(), vin)
+	_, err := c.VehicleService.DeleteVehicleByVin(ctx.Request().Context(), vin)
 	if err != nil {
 		return ctx.JSON(http.StatusNotFound, map[string]interface{}{
 			"message": "Vehicle not found with vin: " + vin,
@@ -100,8 +100,5 @@ func (c *VehicleController) DeleteVehicleByVin(ctx echo.Context) error {
 		})
 	}
 
-	return ctx.JSON(http.StatusOK, map[string]interface{}{
-		"message": "Vehicle successfully deleted",
-		"data":    resp,
-	})
+	return ctx.NoContent(http.StatusNoContent)
 }
