@@ -5,10 +5,10 @@ import (
 	"time"
 )
 
-type Admin struct {
+type User struct {
 	bun.BaseModel `bun:"admins"`
 	ID            int       `json:"id" bun:"id,pk,autoincrement"`
-	AdminID       string    `json:"user_id" bun:"admin_id,unique"`
+	UserID        string    `json:"user_id" bun:"admin_id,unique"`
 	FirstName     string    `json:"first_name" bun:"first_name"`
 	LastName      string    `json:"last_name" bun:"last_name"`
 	Email         string    `json:"email" bun:"email,unique"`

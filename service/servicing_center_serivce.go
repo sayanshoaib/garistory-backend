@@ -19,7 +19,7 @@ func NewServicingCenterService(repo *repository.ServicingCenterRepository) *Serv
 	}
 }
 
-func (service *ServicingCenterService) RegisterServicingCenter(
+func (service *ServicingCenterService) CreateServicingCenter(
 	ctx context.Context, center *apimodels.ReqServicingCenter) (*apimodels.RespServiceCenter, error) {
 	err := center.Validate()
 	if err != nil {
@@ -41,7 +41,7 @@ func (service *ServicingCenterService) RegisterServicingCenter(
 		CreatedAt: time.Now(),
 	}
 
-	respEntity, err := service.ServicingCenterRepository.RegisterServicingCenter(ctx, servicingCenterEntity)
+	respEntity, err := service.ServicingCenterRepository.CreateServicingCenter(ctx, servicingCenterEntity)
 	if err != nil {
 		return nil, err
 	}

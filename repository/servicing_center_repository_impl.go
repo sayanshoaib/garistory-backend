@@ -20,7 +20,7 @@ func NewServicingCenterRepository(client *bun.DB, addressRepository *AddressRepo
 	}
 }
 
-func (repo *ServicingCenterRepository) RegisterServicingCenter(
+func (repo *ServicingCenterRepository) CreateServicingCenter(
 	ctx context.Context, center *entity.ServiceCenter) (*entity.ServiceCenter, error) {
 	reqAddress := center.Address
 	addressEntity, err := repo.AddressRepository.CreateAddress(ctx, &reqAddress)

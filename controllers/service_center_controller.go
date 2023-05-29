@@ -28,7 +28,7 @@ func (c *ServiceCenterController) RegisterServicingCenter(ctx echo.Context) erro
 		})
 	}
 
-	resp, err := c.ServicingCenterService.RegisterServicingCenter(ctx.Request().Context(), reqServiceCenter)
+	resp, err := c.ServicingCenterService.CreateServicingCenter(ctx.Request().Context(), reqServiceCenter)
 	if err != nil {
 		log.Print(err)
 		return ctx.JSON(http.StatusOK, map[string]interface{}{
