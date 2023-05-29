@@ -57,7 +57,6 @@ func (repo *ServicingCenterRepository) GetServicingCenterByID(
 		Model(servicingCenter).
 		Relation("Address").
 		Where("service_center_id = ?", servicingCenterID).
-		Where("deleted_at IS NULL").
 		Scan(ctx)
 	if err != nil {
 		return nil, err
@@ -70,7 +69,6 @@ func (repo *ServicingCenterRepository) GetAllServicingCenter(ctx context.Context
 	var servicingCenters []entity.ServiceCenter
 	count, err := repo.Client.NewSelect().
 		Model(&servicingCenters).
-		Where("deleted_at IS NULL").
 		Relation("Address").
 		Limit(20).
 		ScanAndCount(ctx)
